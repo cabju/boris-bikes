@@ -1,14 +1,14 @@
 require 'docking_station'
 describe DockingStation do
 it 'expecting docking station to respond to method "release bike"' do
+  bike = Bike.new
   expect(DockingStation.new).to respond_to(:release_bike)
   end
 it 'expects "true" if the bike is working' do
+  bike = Bike.new
   expect(DockingStation.new.release_bike.working?).to eq true
   end
-it 'expects docking station to respond to dock' do
-  expect(DockingStation.new).to respond_to(:dock)
-end
+it { is_expected.to respond_to(:dock).with(1).argument }
 end
 
 
