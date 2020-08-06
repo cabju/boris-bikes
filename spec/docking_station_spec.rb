@@ -4,10 +4,6 @@ describe DockingStation do
     bike = Bike.new
     expect(DockingStation.new).to respond_to(:release_bike)
   end
-  it 'expects "true" if the bike is working' do
-    bike = Bike.new
-    expect(DockingStation.new.release_bike.working?).to eq true
-  end
   it { is_expected.to respond_to(:dock).with(1).argument }
 
   it { is_expected.to respond_to(:bike) }
@@ -16,6 +12,16 @@ describe DockingStation do
   	bike = Bike.new
   	subject.dock(bike)
   	expect(subject.bike).to eq bike
+  end
+    describe '#release_bike' do
+    it 'releases a bike' do
+      bike = Bike.new
+      subject.dock(bike)
+      expect(subject.release_bike).to eq bike
+    end
+    it 'expects "no bikes available" if docking station is empty' do
+      expect { subject.release_bike }.to raise_error 'no bikes available'
+    end
   end
 end
 
