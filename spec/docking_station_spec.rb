@@ -6,6 +6,9 @@ it 'expecting docking station to respond to method "release bike"' do
 it 'expects "true" if the bike is working' do
   expect(DockingStation.new.release_bike.working?).to eq true
   end
+it 'expects docking station to respond to dock' do
+  expect(DockingStation.new).to respond_to(:dock)
+end
 end
 
 
